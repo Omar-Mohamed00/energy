@@ -1,6 +1,6 @@
 ﻿namespace energy.Models
 {
-    public class Device2 : BaseEntity
+    public class CurrentVoltKWHourPerHour:BaseEntity
     {
         public int KWHour { get; set; }
     }
