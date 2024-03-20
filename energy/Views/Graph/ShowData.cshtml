@@ -22,22 +22,18 @@
     </div>
 </p>
 <br />
-<a asp-controller="Graph" asp-action="showDevice1PerHour" style="text-decoration: none;color: black;background: lavender;padding: 7px;">
-    Device1 Per Hour
-</a>
-<br />
-<br />
-<br />
-<a asp-controller="Graph" asp-action="showDevice1PerDay" style="text-decoration: none;color: black;background: lavender;padding: 7px;">
-    Device1 Per Day
-</a>
-<br />
-<br />
-<br />
-<a asp-controller="Graph" asp-action="showDevice1PerMonth" style="text-decoration: none;color: black;background: lavender;padding: 7px;">
-    Device1 Per Month
-</a>
-<br />
+<div style="display: flex;justify-content: space-between;">
+    <a asp-controller="Graph" asp-action="showDevice1PerHour" style="text-decoration: none;color: black;background: lavender;padding: 7px;">
+        Device1 Per Hour
+    </a>
+    <a asp-controller="Graph" asp-action="showDevice1PerDay" style="text-decoration: none;color: black;background: lavender;padding: 7px;">
+        Device1 Per Day
+    </a>
+    <a asp-controller="Graph" asp-action="showDevice1PerMonth" style="text-decoration: none;color: black;background: lavender;padding: 7px;">
+        Device1 Per Month
+    </a>
+</div>
+
 <div id="ChartView">
 <canvas id="myChart" ></canvas>
 </div>
