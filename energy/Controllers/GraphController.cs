@@ -122,5 +122,48 @@ namespace energy.Controllers
 
             return data;
         }
+
+        public IActionResult showDevice1ConsumptionPerDay()
+        {
+            return View();
+        }
+        [HttpPost]
+        public List<object> Device1ConsumptionPerDay()
+        {
+            List<object> data = new List<object>();
+            List<DateTime> labels = _dbContext.ConsumptionPerDay.Select(p => p.Time).ToList();
+
+            data.Add(labels);
+            List<int> salesCurrent = _dbContext.ConsumptionPerDay.Select(p => p.DeviceCurrent).ToList();
+            List<int> salesKWHour = _dbContext.ConsumptionPerDay.Select(p => p.KWHour).ToList();
+            List<int> salesVolt = _dbContext.ConsumptionPerDay.Select(p => p.volt).ToList();
+
+            data.Add(salesCurrent);
+            data.Add(salesKWHour);
+            data.Add(salesVolt);
+
+            return data;
+        }
+        public IActionResult showDevice1ConsumptionPerMonth()
+        {
+            return View();
+        }
+        [HttpPost]
+        public List<object> Device1ConsumptionPerMonth()
+        {
+            List<object> data = new List<object>();
+            List<DateTime> labels = _dbContext.ConsumptionPerMonth.Select(p => p.Time).ToList();
+
+            data.Add(labels);
+            List<int> salesCurrent = _dbContext.ConsumptionPerMonth.Select(p => p.DeviceCurrent).ToList();
+            List<int> salesKWHour = _dbContext.ConsumptionPerMonth.Select(p => p.KWHour).ToList();
+            List<int> salesVolt = _dbContext.ConsumptionPerMonth.Select(p => p.volt).ToList();
+
+            data.Add(salesCurrent);
+            data.Add(salesKWHour);
+            data.Add(salesVolt);
+
+            return data;
+        }
     }
 }

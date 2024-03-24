@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using energy.Data;
 
@@ -11,9 +12,11 @@ using energy.Data;
 namespace energy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240320210944_AddConsumptionPerDay")]
+    partial class AddConsumptionPerDay
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,37 +54,6 @@ namespace energy.Migrations
                     b.HasKey("id");
 
                     b.ToTable("ConsumptionPerDay");
-                });
-
-            modelBuilder.Entity("energy.Models.ConsumptionPerMonth", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<int>("DeviceCurrent")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeviceInfo")
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("DeviceName")
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<int>("KWHour")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime");
-
-                    b.Property<int>("volt")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ConsumptionPerMonth");
                 });
 
             modelBuilder.Entity("energy.Models.CurrentVoltKWHourPerDay", b =>
@@ -271,7 +243,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device1",
                             DeviceName = "D-1",
                             KWHour = 4,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(70),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2004),
                             volt = 42
                         },
                         new
@@ -281,7 +253,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device1",
                             DeviceName = "D-1",
                             KWHour = 8,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(73),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2007),
                             volt = 45
                         },
                         new
@@ -291,7 +263,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device1",
                             DeviceName = "D-1",
                             KWHour = 12,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(75),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2008),
                             volt = 47
                         },
                         new
@@ -301,7 +273,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device1",
                             DeviceName = "D-1",
                             KWHour = 22,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(76),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2010),
                             volt = 52
                         },
                         new
@@ -311,7 +283,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device1",
                             DeviceName = "D-1",
                             KWHour = 7,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(78),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2011),
                             volt = 21
                         });
                 });
@@ -354,7 +326,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device2",
                             DeviceName = "D-2",
                             KWHour = 32,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(247),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2179),
                             volt = 62
                         },
                         new
@@ -364,7 +336,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device2",
                             DeviceName = "D-2",
                             KWHour = 5,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(249),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2182),
                             volt = 15
                         },
                         new
@@ -374,7 +346,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device2",
                             DeviceName = "D-2",
                             KWHour = 12,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(251),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2184),
                             volt = 47
                         },
                         new
@@ -384,7 +356,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device2",
                             DeviceName = "D-2",
                             KWHour = 22,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(253),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2186),
                             volt = 52
                         },
                         new
@@ -394,7 +366,7 @@ namespace energy.Migrations
                             DeviceInfo = "Device2",
                             DeviceName = "D-2",
                             KWHour = 12,
-                            Time = new DateTime(2024, 3, 23, 23, 44, 5, 704, DateTimeKind.Utc).AddTicks(254),
+                            Time = new DateTime(2024, 3, 20, 21, 9, 43, 997, DateTimeKind.Utc).AddTicks(2187),
                             volt = 51
                         });
                 });

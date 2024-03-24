@@ -123,6 +123,8 @@ namespace energy.Data
         public DbSet<Device1> Device1 {  get; set; }
         public DbSet<Device2> Device2 {  get; set; }
         public DbSet<CurrentVoltSecond> CurrentVoltSecond {  get; set; }
+        public DbSet<ConsumptionPerDay> ConsumptionPerDay {  get; set; }
+        public DbSet<ConsumptionPerMonth> ConsumptionPerMonth {  get; set; }
         public DbSet<CurrentVoltMinutes> CurrentVoltMinutes {  get; set; }
         public DbSet<CurrentVoltKWHourPerHour> CurrentVoltKWHourPerHour {  get; set; }
         public DbSet<CurrentVoltKWHourPerDay> CurrentVoltKWHourPerDay {  get; set; }
