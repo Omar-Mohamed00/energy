@@ -80,6 +80,25 @@ namespace energy.Controllers
 
             return data;
         }
+        public IActionResult showDevice1PerMinute()
+        {
+            return View();
+        }
+        [HttpPost]
+        public List<object> Device1PerMinute()
+        {
+            List<object> data = new List<object>();
+            List<DateTime> labels = _dbContext.CurrentVoltMinutes.Select(p => p.Time).ToList();
+
+            data.Add(labels);
+            List<int> salesCurrent = _dbContext.CurrentVoltMinutes.Select(p => p.DeviceCurrent).ToList();
+            List<int> salesVolt = _dbContext.CurrentVoltMinutes.Select(p => p.volt).ToList();
+
+            data.Add(salesCurrent);
+            data.Add(salesVolt);
+
+            return data;
+        }
         public IActionResult showDevice1PerDay()
         {
             return View();

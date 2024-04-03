@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <div class="row">
+        <div class="col-2">
+            <label><b style="color:floralwhite;width:150px;">Chart Type</b></label>
+        </div>
+        <div class="col-3">
+            <select id="ChartType" class="form-control" style="width:150px;">
+                <option selected>Select Chart Type</option>
+                <option>bar</option>
+                <option>line</option>
+                <option>pie</option>
+                <option>doughnut</option>
+            </select>
+        </div>
+        <div class="col-6">
+            <input id="ID" value="Show Graph" type="button" class="btn btn-outline-light" />
+        </div>
+    </div>
+</p>
+<br />
+<div id="ChartView">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#ID").click(function () {
+
+            var chartType = $("#ChartType").val();
+            var chartView = document.getElementById('ChartView');
+
+            chartView.innerHTML = '&nbsp;';
+
+            $('#ChartView').append('<canvas id="myChart" style="max-width:750px;max-height:400px;"><canvas>');
+
+            $.ajax({
+                type: "POST",
+                url: "/Graph/Device1PerMinute",
+                data: "",
+                contextType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccessResult,
+                error: OnError
+            });
+
+            function OnSuccessResult(data) {
+                var _data = data;
+                var _chartLabels = _data[0];
+                var _chartData = _data[1];
+                var _chartData2 = _data[2];
+                var barColor = ["red", "blue", "green", "orange", "brown", "purple"];
+
+                new Chart("myChart",
+                    {
+                        type: chartType,
+                        data: {
+                            labels: _chartLabels,
+
+                            //labels: ["KWHour", "Current", "Volt"],
+                            datasets: [{
+                                label: 'Current',
+                                backgroundColor: barColor[0],
+                                borderColor: "orange",
+                                data: _chartData
+                            }, {
+                                label: 'Volt',
+                                data: _chartData2,
+                                borderColor: "green",
+                                backgroundColor: barColor[1],
+                                fill: false
+                            }]
+                        }
+                    });
+            }
+            function OnError(err) {
+
+            }
+        })
+    })
+</script>
+<br />
+<h1 style="text-align: center;">Machine 1 Per Minute</h1>
+
+<div class="col-6 col-md-2 offset-lg-1 pb-1">
+    <a asp-controller="Graph" asp-action="showData" class="btn btn-outline-primary bg-gradient mb-5 fw-semibold btn-sm text-uppercase">
+        <small>Back To Device</small>
+    </a>
+</div>
